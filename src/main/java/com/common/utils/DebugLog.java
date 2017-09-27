@@ -1,10 +1,10 @@
-package co.allconnected.lib.stat;
+package com.common.utils;
 
 import android.util.Log;
 
 public class DebugLog {
 	
-	public static boolean isDubug = false;
+	public static boolean isDubug = true;
 	
 	public static void enableDebug(boolean isEnable){
 		isDubug = isEnable;

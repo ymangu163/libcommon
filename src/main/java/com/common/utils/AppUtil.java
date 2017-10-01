@@ -18,6 +18,7 @@ public class AppUtil {
 
     /**
      * 获取签名key
+     *
      * @param context
      * @return
      */
@@ -40,5 +41,37 @@ public class AppUtil {
         return "";
     }
 
+    /**
+     * 某應用是否已安装
+     *
+     * @param context
+     * @param packageName
+     * @return
+     */
+    public static boolean isAppInstalled(Context context, String packageName) {
+        try {
+            return context.getPackageManager().getApplicationInfo(packageName, 0) != null;
+        } catch (Throwable e) {
+            return false;
+        }
+    }
 
+    /**
+     * 获得当前Apk的版本号，如：1.0.0
+     */
+    public static String getVersionName(Context context) {
+        try {
+            return context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            return "1.0";
+        }
+    }
+
+    public static int getVersionCode(Context context) {
+        try {
+            return context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            return 0;
+        }
+    }
 }
